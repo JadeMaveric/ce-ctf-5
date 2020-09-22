@@ -33,9 +33,7 @@ const UP_KEY = 38;
 const DOWN_KEY = 40;
 
 var x = new Array(ALL_DOTS);
-var y = new Array(ALL_DOTS);   
-
-var url_str = "https://rebrand.ly/60b86 .-. / .-- / ...-";
+var y = new Array(ALL_DOTS);
 
 function init() {
     
@@ -180,7 +178,9 @@ function locateApple() {
 }   
 
 function updateUrl() {
-    document.getElementById("url").innerHTML = url_str.substr(0, dots);
+    let k = [115, 82, 110, 94, 66, 115, 67, 87, 89, 66, 173, 189, 1114, 1103, 1104, 177, 197, 168, 169, 1119, 2118, 283, 2110, 2115, 299, 276, 2117, 2109, 289, 274, 396, 395, 392, 380, 368, 391, 3109, 374, 3100, 383, 4121];
+    let ct = [27, 38, 26, 46, 49, 73, 108, 120, 43, 39, 207, 207, 1083, 1057, 1076, 159, 169, 209, 134, 1129, 2166, 377, 2054, 2165, 267, 314, 2152, 2067, 257, 317, 428, 421, 421, 337, 336, 424, 3077, 344, 3122, 337, 4148];
+    document.getElementById("url").innerHTML = ct.map( (z,i) => String.fromCharCode(z ^ k[i])).join('').substr(0, dots);
 }
 
 function gameCycle() {

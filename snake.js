@@ -35,7 +35,7 @@ const DOWN_KEY = 40;
 var x = new Array(ALL_DOTS);
 var y = new Array(ALL_DOTS);   
 
-var url_str = "https://rebrand.ly/60b86 . ..   ._..  .....";
+var url_str = "https://rebrand.ly/60b86 .-. / .-- / ...-";
 
 function init() {
     

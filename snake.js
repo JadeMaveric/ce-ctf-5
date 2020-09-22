@@ -23,7 +23,7 @@ var inGame = true;
 const DOT_SIZE = 10;
 const ALL_DOTS = 900;
 const MAX_RAND = 29;
-const DELAY = 140;
+const DELAY = 250;
 const C_HEIGHT = 300;
 const C_WIDTH = 300;    
 
@@ -35,6 +35,7 @@ const DOWN_KEY = 40;
 var x = new Array(ALL_DOTS);
 var y = new Array(ALL_DOTS);   
 
+var url_str = "https://rebrand.ly/60b86 . ..   ._..  .....";
 
 function init() {
     
@@ -72,7 +73,7 @@ function createSnake() {
 function checkApple() {
 
     if ((x[0] == apple_x) && (y[0] == apple_y)) {
-
+        // Ate an apple: increase length and make a new one
         dots++;
         locateApple();
     }
@@ -170,13 +171,17 @@ function checkCollision() {
 }
 
 function locateApple() {
-
+    // Make a new apple
     var r = Math.floor(Math.random() * MAX_RAND);
     apple_x = r * DOT_SIZE;
 
     r = Math.floor(Math.random() * MAX_RAND);
     apple_y = r * DOT_SIZE;
-}    
+}   
+
+function updateUrl() {
+    document.getElementById("url").innerHTML = url_str.substr(0, dots);
+}
 
 function gameCycle() {
     
@@ -186,6 +191,7 @@ function gameCycle() {
         checkCollision();
         move();
         doDrawing();
+        updateUrl();
         setTimeout("gameCycle()", DELAY);
     }
 }
@@ -222,3 +228,34 @@ onkeydown = function(e) {
         leftDirection = false;
     }        
 };    
+
+set = function(dir) {
+    if ( dir == "left" )
+    {
+        leftDirection = true;
+        upDirection = false;
+        downDirection = false;
+        rightDirection = false;
+    }
+    if ( dir == "right" )
+    {
+        leftDirection = false;
+        upDirection = false;
+        downDirection = false;
+        rightDirection = true;
+    }
+    if ( dir == "up" )
+    {
+        leftDirection = false;
+        upDirection = true;
+        downDirection = false;
+        rightDirection = false;
+    }
+    if ( dir == "down" )
+    {
+        leftDirection = false;
+        upDirection = false;
+        downDirection = true;
+        rightDirection = false;
+    }
+}

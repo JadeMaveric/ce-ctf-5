@@ -9,8 +9,15 @@
 <script src="snake.js"></script>
 </head>
     
-<body onload="init();">
+<body onload="init();" style="text-align: center;">
+    <div id="url">This is the url</div>
     <canvas id="myCanvas" width="300" height="300">
     </canvas>
+    <div id="buttons">
+        <button id="up" onclick="set('up')">▲</button><br>
+        <button id="left" onclick="set('left')">◀</button>
+        <button id="right" onclick="set('right')">▶</button><br>
+        <button id="down" onclick="set('down')">▼</button>
+    </div>
 </body>
 </html>
